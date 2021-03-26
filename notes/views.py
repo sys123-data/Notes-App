@@ -32,9 +32,9 @@ def notes_list(request):
 @api_view(['GET','PUT','DELETE'])
 def notes_detail(request, pk):
     try:
-        notes = Notes.object.get(pk=pk)
+        notes = Notes.objects.get(pk=pk)
     except Notes.DoesNotExist:
-        return JsonResponse({'message':'The country does not exist'}, status=status.HTTP_404_NOT_FOUND)
+        return JsonResponse({'message':'The note does not exist'}, status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
         notes_serializer = NotesSerializer(notes)
@@ -50,4 +50,4 @@ def notes_detail(request, pk):
 
     elif request.method == 'DELETE':
         notes.delete()
-        return JsonResponse({'message':'Country was deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
+        return JsonResponse({'message':'Notes was deleted successfully'}, status=status.HTTP_204_NO_CONTENT)

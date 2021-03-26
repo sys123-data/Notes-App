@@ -14,8 +14,11 @@ class Notes(models.Model):
     item09 = models.CharField(max_length=50, blank=True, default='')
     item10 = models.CharField(max_length=50, blank=True, default='')
 
+
+
     def __str__(self):
         return self.name
 
     class Meta:
         ordering = ('id', )
+
